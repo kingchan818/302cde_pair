@@ -4,7 +4,7 @@ export enum status {
 }
 
 export const allowance = {
-    marriedPersonAllowance : 240000,
+    marriedPersonAllowance : 264000,
     basic : 132000
 }
 
@@ -27,23 +27,25 @@ export class Person {
         this.mpfRate = mpfRate
     }
 
-    countTotalAllowance (){
+    countTotalAllowance () : void{
         if(this.status === status.married){
             this.totalAllowance += allowance.marriedPersonAllowance
+            return;
         }
         this.totalAllowance += allowance.basic
     }
-    countTotalDeduction (){
+    countTotalDeduction () : void{
         if(this.mpfRate > maximumDeduction.mpf){
             throw new Error(' have exceeed the maximum deduction ')
         }
         this.totalDeduction = this.mpfRate
     }
-    countNetChargeableIncome (){
+    countNetChargeableIncome () : number{
         console.log("total allowance :",this.totalAllowance)
         console.log("total deduction :",this.totalDeduction)
-        return this.netChargeableIncome = this.income - this.totalDeduction - this.totalAllowance
+        this.netChargeableIncome = this.income - this.totalDeduction - this.totalAllowance
+        console.log('netChargeableIncome :', this.netChargeableIncome)
+        return this.netChargeableIncome
     }
-    countJointAssement (){}
 }
 

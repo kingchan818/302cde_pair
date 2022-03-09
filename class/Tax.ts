@@ -22,44 +22,23 @@ export class Tax extends Person{
             }
         }
     }
-
     calculatePayableTax () : number{
         if(this.applyStandardRate !== true){
-            let progressiveCount : number = 0
-            let countIteration : number = 0
-            if(this.netChargeableIncome >= 50000){
-                progressiveCount += 50000*0.02
-                countIteration += 1
-            }
-            if(this.netChargeableIncome >= 100000){
-                progressiveCount += 50000*0.06
-                countIteration += 1
-
-            }
-            if(this.netChargeableIncome >= 150000){
-                progressiveCount += 50000*0.1
-                countIteration += 1
-
-            }
-            if(this.netChargeableIncome >= 200000){
-                progressiveCount += 50000*0.14
-                countIteration += 1
-                const calculation = (this.netChargeableIncome - 200000 )*0.17 + progressiveCount
-                this.payableTax =  calculation
-            }
-            if(countIteration <= 3){
-                this.payableTax = this.netChargeableIncome - countIteration*50000 - progressiveCount 
-            }
+            this.payableTax += Math.min(50000,this.netChargeableIncome) *0.02
+            this.payableTax += Math.max(0,Math.min(100000,this.netChargeableIncome)-50000)*0.06
+            this.payableTax += Math.max(0,Math.min(150000,this.netChargeableIncome)-100000)*0.1
+            this.payableTax += Math.max(0,Math.min(200000,this.netChargeableIncome)-150000)*0.14
+            this.payableTax += Math.max(0,this.netChargeableIncome -200000)*0.17
+            return this.payableTax = Math.floor(this.payableTax);
         }else{
             this.payableTax = this.income * 0.15 
         }
         return this.payableTax
     }
     taxReduction () {
-        this.payableTax -= 20000
+       this.payableTax -= 20000
     }
     getPayableTax (){
-        console.log('payable tax',this.payableTax)
         return this.payableTax
     }
 }

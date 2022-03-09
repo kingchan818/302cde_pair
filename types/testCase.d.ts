@@ -1,0 +1,16 @@
+export type TestCase = {
+    caseNo : number ,
+    wifePersonalIncome : number,
+    husbandPersonalIncome : number,
+    wifeMPF : number,
+    husbandMPF: number,
+    wifeNetChargeableIncome : number,
+    husbandNetChargeableIncome : number,
+    wifeTaxPayable : number,
+    husbandTaxPayable : number,
+    jointTaxPayable: number,
+    jointAssessmentRecommendation : string,
+    wifeNetTotalIncome : number,
+    husbandNetTotalIncome:number,
+    totalNetChargeableIncome: number,
+}

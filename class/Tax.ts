@@ -29,7 +29,12 @@ export class Tax extends Person{
             this.payableTax += Math.max(0,Math.min(150000,this.netChargeableIncome)-100000)*0.1
             this.payableTax += Math.max(0,Math.min(200000,this.netChargeableIncome)-150000)*0.14
             this.payableTax += Math.max(0,this.netChargeableIncome -200000)*0.17
+
+            if(this.payableTax < 0){
+                return this.payableTax = 0
+            } 
             return this.payableTax = Math.floor(this.payableTax);
+
         }else{
             this.payableTax = this.income * 0.15 
         }

@@ -41,10 +41,13 @@ export class Person {
         this.totalDeduction = this.mpfRate
     }
     countNetChargeableIncome () : number{
-        console.log("total allowance :",this.totalAllowance)
-        console.log("total deduction :",this.totalDeduction)
+        // console.log("total allowance :",this.totalAllowance)
+        // console.log("total deduction :",this.totalDeduction)
+        if(this.income === 0) {
+            return this.netChargeableIncome = 0
+        }
         this.netChargeableIncome = this.income - this.totalDeduction - this.totalAllowance
-        console.log('netChargeableIncome :', this.netChargeableIncome)
+        // console.log('netChargeableIncome :', this.netChargeableIncome)
         return this.netChargeableIncome
     }
 }

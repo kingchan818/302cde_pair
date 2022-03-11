@@ -1,8 +1,9 @@
 import {status} from './class/Person'
 import { Tax } from './class/Tax';
 
-const t = new Tax(300000,status.single,15000)
+const t = new Tax(0,status.single,0)
 const t2 = new Tax(400000,status.single,18000)
+console.log('hello world')
 console.log("-----------------------")
 console.log("wife")
 t.countTotalAllowance();

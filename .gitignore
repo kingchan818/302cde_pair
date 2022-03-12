@@ -2,3 +2,5 @@
 /dist
 .vscode
 /coverage
+
+/tax-calculator/node_modules

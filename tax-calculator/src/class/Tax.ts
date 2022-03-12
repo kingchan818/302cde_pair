@@ -1,11 +1,11 @@
-import {Person, status, maximumDeduction} from './Person'
+import {Person, status} from './Person'
 
 export class Tax extends Person{
     private payableTax : number = 0
     private applyStandardRate : boolean = false
     private taxDeductionRate : number = 20000
 
-    constructor(income : number,status : status, mpfRate: number){
+    public constructor(income : number,status : status, mpfRate: number){
         super(income,status,mpfRate)
     }
 

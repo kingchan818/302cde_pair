@@ -2,7 +2,6 @@ import {readFile, utils} from 'xlsx'
 import { TestCase } from '../types/testCase';
 import {Tax} from '../tax-calculator/src/class/Tax'
 import {status } from '../tax-calculator/src/class/Person'
-import {sum } from '../sum'
 
 const workbook = readFile('testExcel.xlsx')
 let workSheet = new Map<string,TestCase[]>();

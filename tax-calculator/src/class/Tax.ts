@@ -22,6 +22,11 @@ export class Tax extends Person{
             }
         }
     }
+
+    getNetChargeableIncomeForSt (){
+        return this.income - this.totalDeduction
+    }
+
     calculatePayableTax () : number{
         if(this.applyStandardRate !== true){
             this.payableTax += Math.min(50000,this.netChargeableIncome) *0.02
@@ -36,7 +41,7 @@ export class Tax extends Person{
             return this.payableTax = Math.floor(this.payableTax);
 
         }else{
-            this.payableTax = this.income * 0.15 
+            this.payableTax = this.getNetChargeableIncomeForSt() * 0.15 
         }
         return this.payableTax
     }

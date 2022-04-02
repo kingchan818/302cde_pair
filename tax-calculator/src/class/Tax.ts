@@ -45,9 +45,12 @@ export class Tax extends Person{
         }
         return this.payableTax
     }
+    
     taxReduction () {
        this.payableTax -= 20000
+       if(this.payableTax < 0) this.payableTax = 0
     }
+
     getPayableTax (){
         return this.payableTax
     }

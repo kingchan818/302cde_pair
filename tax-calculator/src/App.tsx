@@ -19,6 +19,7 @@ function App() {
     const [mpfWife, setMpfWife] = useState<number>(0);
     const [show, setShow] = useState(false);
     const [data, setData] = useState<JSX.Element>();
+
     const calculateTotalTax = (user: Tax): returnValueOfCalculateTotalTax => {
         user.checkStandardRate();
         user.countTotalAllowance();
@@ -30,14 +31,14 @@ function App() {
         const AfterTaxReduction: number = user.getPayableTax();
         return { beforeTaxReduction, AfterTaxReduction };
     };
+
     const submit = () => {
         if (select === status.single) {
             const tax = new Tax(income, status.single, mpf);
-            const { beforeTaxReduction, AfterTaxReduction } = calculateTotalTax(tax);
+            const { beforeTaxReduction } = calculateTotalTax(tax);
             setData(
                 <div>
-                    <p>Your tax is ${beforeTaxReduction} (BEFORE TAX REDUCTION) </p>
-                    <p>Your tax is ${AfterTaxReduction} (AFTER TAX REDUCTION)</p>
+                    <p>Your tax is ${beforeTaxReduction} </p>
                 </div>
             );
             setShow(!show);
@@ -50,14 +51,11 @@ function App() {
             const jointReturnValue = calculateTotalTax(joint);
             setData(
                 <div>
-                    <p>Your husband's tax is🤵🏻 ${hushbandReturnValue.beforeTaxReduction}(BEFORE TAX REDUCTION)</p>
-                    <p>Your husband's tax is🤵🏻 ${hushbandReturnValue.AfterTaxReduction}(AFTER TAX REDUCTION) </p>
-                    <p>Your wife's tax is👰🏻‍♀️ ${wifeReturnValue.beforeTaxReduction} (BEFORE TAX REDUCTION) </p>
-                    <p>Your wife's tax is👰🏻‍♀️ ${wifeReturnValue.AfterTaxReduction} (AFTER TAX REDUCTION) </p>
+                    <p>Your husband's tax is🤵🏻 ${hushbandReturnValue.beforeTaxReduction}</p>
+                    <p>Your wife's tax is👰🏻‍♀️ ${wifeReturnValue.beforeTaxReduction} </p>
                     <p>
                         Total Tax Payable by you and our spouse is🤵🏻👰🏻‍♀️ $
-                        {hushbandReturnValue.beforeTaxReduction + wifeReturnValue.beforeTaxReduction} (BEFORE TAX
-                        REDUCTION){' '}
+                        {hushbandReturnValue.beforeTaxReduction + wifeReturnValue.beforeTaxReduction}
                     </p>
                     <p>Your family under joint assessment is 👨‍👧 ${jointReturnValue.beforeTaxReduction}</p>
                 </div>

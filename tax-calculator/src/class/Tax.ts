@@ -1,11 +1,11 @@
-import {Person, status, maximumDeduction} from './Person'
+import {Person, status} from './Person'
 
 export class Tax extends Person{
     private payableTax : number = 0
     private applyStandardRate : boolean = false
     private taxDeductionRate : number = 20000
 
-    constructor(income : number,status : status, mpfRate: number){
+    public constructor(income : number,status : status, mpfRate: number){
         super(income,status,mpfRate)
     }
 
@@ -22,6 +22,11 @@ export class Tax extends Person{
             }
         }
     }
+
+    getNetChargeableIncomeForSt (){
+        return this.income - this.totalDeduction
+    }
+
     calculatePayableTax () : number{
         if(this.applyStandardRate !== true){
             this.payableTax += Math.min(50000,this.netChargeableIncome) *0.02
@@ -36,13 +41,16 @@ export class Tax extends Person{
             return this.payableTax = Math.floor(this.payableTax);
 
         }else{
-            this.payableTax = this.income * 0.15 
+            this.payableTax = this.getNetChargeableIncomeForSt() * 0.15 
         }
         return this.payableTax
     }
+    
     taxReduction () {
        this.payableTax -= 20000
+       if(this.payableTax < 0) this.payableTax = 0
     }
+
     getPayableTax (){
         return this.payableTax
     }

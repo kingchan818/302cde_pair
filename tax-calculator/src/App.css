@@ -1,0 +1,37 @@
+label {
+    display: block;
+}
+input {
+    display: block;
+}
+
+.input-income {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-deduction {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+label {
+    padding-left: 3rem;
+    padding-right: 2rem;
+}
+.submit-btn {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.custom-modal {
+    max-width: 600px;
+}
